@@ -1,11 +1,12 @@
 #include "UIDevice+notchedDevice.h"
 
 @implementation UIDevice (notchedDevice) // ty burrit0z for making this to work
+static NSString *modelID = [UIDevice.currentDevice _currentProduct]; // get the device Identifier
+static NSString *model = [UIDevice.currentDevice model]; // get the device model
 
 -(BOOL)isNotched {
-    NSString *modelName = [UIDevice.currentDevice _currentProduct]; // get the device Identifier
-
-    if([modelName isEqualToString:@"iPhone6,1"] || [modelName isEqualToString:@"iPhone6,2"] || [modelName isEqualToString:@"iPhone7,2"] || [modelName isEqualToString:@"iPhone7,1"] || [modelName isEqualToString:@"iPhone8,1"] || [modelName isEqualToString:@"iPhone8,2"] || [modelName isEqualToString:@"iPhone8,4"] || [modelName isEqualToString:@"iPhone9,1"] || [modelName isEqualToString:@"iPhone9,3"] || [modelName isEqualToString:@"iPhone9,2"] || [modelName isEqualToString:@"iPhone9,4"] || [modelName isEqualToString:@"iPhone10,1"] || [modelName isEqualToString:@"iPhone10,4"] || [modelName isEqualToString:@"iPhone10,2"] || [modelName isEqualToString:@"iPhone10,5"] || [modelName isEqualToString:@"iPhone12,8"]) { 
+    NSArray *notchedDevices = [NSArray initWithObjects:@"iPhone6,1", @"iPhone6,2", @"iPhone7,1", @"iPhone7,2", @"iPhone8,1", @"iPhone8,2", @"iPhone8,4", @"iPhone9,1", @"iPhone9,2", @"iPhone9,3", @"iPhone9,4", @"iPhone10,1", @"iPhone10,2", @"iPhone10,4". @"iPhone10,5". @"iPhone12,0", nil];
+    if([notchedDevices containsObject: modelName]) { 
         return NO;
     } else {
         return YES;
@@ -13,8 +14,6 @@
 }
 
 -(BOOL)isAnIpad {
-    NSString *model = [UIDevice.currentDevice model]; // get the device model
-
     if([model isEqualToString:@"iPad"]){
         return YES;
     } else {
@@ -23,8 +22,6 @@
 }
 
 -(BOOL)isAnIpod {
-    NSString *model = [UIDevice.currentDevice model]; // get the device model
-
     if([model isEqualToString:@"iPod"]){
         return YES;
     } else {
